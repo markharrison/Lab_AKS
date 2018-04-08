@@ -4,6 +4,10 @@ Mark Harrison : 27 Nov 2017
 
 ![](Images/AKS.png)
 
+- [Part 1 - Azure Container Service (AKS)](aks-1.md) ... this document 
+- [Part 2 - Helm Package Management](aks-2.md)
+- [Part 3 - Monitoring Kubernetes](aks-3.md)
+
 ## Overview
 
 Azure Container Service (ACS) allows you to quickly deploy a production ready Kubernetes, DC/OS, or Docker Swarm cluster.
@@ -30,7 +34,7 @@ We can now create an AKS instance using the `az aks create` command.
   - Amend the AKS name to that required - and in the subsequent instructions
 
 ```text
- az aks create --name markaks --generate-ssh-keys
+ az aks create --name markaks --generate-ssh-keys --kubernetes-version 1.9.6
 ```
 
 ![](Images/AKSCreate.png)
@@ -193,4 +197,4 @@ az group delete --name aks-rg -y
 ```
 
 ---
-<http://github.markharrison.io>
+[Home](aks-0.md) | [Next](aks-2.md)
