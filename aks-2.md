@@ -166,19 +166,28 @@ helm package ./colorapi
 
 - Validate the package - install the chart by specifying the tar file.
 
+```PowerShell
+helm install --name rainbow2 colorapi-0.1.0.tgz
+```
+
 ![](Images/HelmRainbow2.png)
 
 ### Tidy Up
 
-To remove the Helm charts
+To remove the Helm charts:
 
 ```PowerShell
-Helm delete --purge rainbow
-Helm delete --purge rainbow2
-
+helm delete --purge rainbow
+helm delete --purge rainbow2
 ```
 
 ![](Images/HelmRemoveRainbow.png)
+
+To remove Helm from the cluster:
+
+```PowerShell
+helm reset
+```
 
 ---
 [Home](aks-0.md) | [Prev](aks-1.md) | [Next](aks-3.md)
