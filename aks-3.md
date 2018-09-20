@@ -46,6 +46,8 @@ Select the OMS Workspace and go to Advance Settings - this will display the work
 
 Next we shall use Helm to install the OMS daemonset on our Kubernetes cluster.
 
+(Update - a newer / simpler alternative to using Helm is the command: `az aks enable-addons -a monitoring -n markaks` )
+
 ```PowerShell
 
 helm install --name omsagent --namespace monitoring  `
