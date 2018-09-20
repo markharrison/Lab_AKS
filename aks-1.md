@@ -63,7 +63,9 @@ kubectl config current-context
 - To display the Kubernetes dashboard, invoke the following
 
 ```text
-kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
+kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin'
+                                    --serviceaccount=kube-system:kubernetes-dashboard
+                                    
 az aks browse --name markaks
 ```
 
