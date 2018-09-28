@@ -25,7 +25,9 @@ Helm has two parts: a client (Helm) and a server (Tiller). Tiller runs inside of
 - To install the Tiller, use the command:
 
 ```text
-helm init
+kubectl create clusterrolebinding tiller --clusterrole=cluster-admin  --serviceaccount=kube-system:tiller
+
+helm init --service-account tiller
 ```
 
 We can see that the Tiller has been installed as a Pod
