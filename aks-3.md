@@ -1,32 +1,35 @@
-# Azure Container Services (AKS) - Hands-on Lab Script
+# Azure Kubernetes Service (AKS) - Hands-on Lab Script
 
-Mark Harrison : 7 Apr 2018
+Mark Harrison : 7 Apr 2018, last update 24 Sep 2018
 
 ![](Images/AKS.png)
 
-- [Part 1 - Azure Container Service (AKS)](aks-1.md)
-- [Part 2 - Helm Package Management](aks-2.md) 
+- [Part 1 - Azure Kubernetes Service (AKS)](aks-1.md)
+- [Part 2 - Helm Package Management](aks-2.md)
 - [Part 3 - Monitoring Kubernetes](aks-3.md) ... this document
 
 ## Overview
 
-In this section, we shall monitor our Kuberntes cluster using:
+In this section, we shall monitor our Kubernetes cluster using:
 
-- Azure Log Analytics 
+- Azure Log Analytics - Container Monitoring solution
+- AKS Monitor (preview)
 - Prometheus / Grafana - open source toolkit to monitor and alert
 - Datadog - commercial monitoring offering 
 
-## Azure Log Analytics
+## Azure Log Analytics - Container Monitoring solution
 
-[Log Analytics](https://azure.microsoft.com/en-gb/services/log-analytics/) is part of Operations Management Suite (OMS), Microsoft Azure's overall management solution. Log Analytics monitors cloud and on-premises environments to maintain availability and performance. It provides insight across workloads and systems to maintain availability and performance.
+[Log Analytics](https://azure.microsoft.com/en-gb/services/log-analytics/) is part of Azure Monitor which provides full observability into your applications, infrastructure and networks. Log Analytics monitors cloud and on-premises environments to maintain availability and performance. It provides insight across workloads and systems to maintain availability and performance.
 
 Log Analytics management solutions are a collection of logic, visualization, and data acquisition rules that provide metrics pivoted around a particular problem area.
 
 The [Container Monitoring solution](https://docs.microsoft.com/en-gb/azure/log-analytics/log-analytics-containers) shows which containers are running, what container image they’re running, and where containers are running. You can view detailed audit information showing commands used with containers. And, you can troubleshoot containers by viewing and searching centralized logs without having to remotely view Docker or Windows hosts. You can find containers that may be noisy and consuming excess resources on a host. And, you can view centralized CPU, memory, storage, and network usage and performance information for containers.
 
+Note some of the screens below refer to OMS - this was the old branding for Azure Monitor and currently remains in some of the UI.
+
 ### Install
 
-Add the Container Monitoring solution to your OMS workspace from Azure marketplace https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft.containersoms
+Add the Container Monitoring solution to your Azure Monitor workspace from Azure marketplace https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft.containersoms
 
 ![](Images/AzureMarketplace.png)
 
@@ -45,8 +48,6 @@ Select the OMS Workspace and go to Advance Settings - this will display the work
 ![](Images/OMSPortalSettings.png)
 
 Next we shall use Helm to install the OMS daemonset on our Kubernetes cluster.
-
-(Update - a newer / simpler alternative to using Helm is the command: `az aks enable-addons -a monitoring -n markaks` )
 
 ```PowerShell
 
@@ -102,6 +103,33 @@ helm delete --purge omsagent
 
 ![](Images/HelmOMSRemove.png)
 
+## AKS Monitor (preview)
+
+To set up and use Azure Monitor container health, use the command to install the the monitoring agent daemonset on our Kubernetes cluster
+
+```PowerShell
+az aks enable-addons -a monitoring -n markaks
+```
+
+![](Images/EnableAddon.png)
+
+- In the Azure portal - select the AKS Monitoring blade
+
+![](Images/MonitorCluster.png)
+
+- Switch to examine Nodes | Controllers | Container views 
+
+![](Images/MonitorNodes.png)
+
+- Select a container, on the right hand side select `View Container logs`
+
+![](Images/ImagesMonitorLogs.png)
+
+### Tidy Up
+
+We can use the following command to remove the monitoring agent daemonset   ...
+
+az aks disable-addons -a monitoring -n markaks
 
 ## Prometheus / Grafana
 

@@ -1,10 +1,10 @@
-# Azure Container Services (AKS) - Hands-on Lab Script
+# Azure Kubernetes Service (AKS) - Hands-on Lab Script
 
-Mark Harrison : 27 Nov 2017
+Mark Harrison : 27 Nov 2017, last update 24 Sep 2018
 
 ![](Images/AKS.png)
 
-- [Part 1 - Azure Container Service (AKS)](aks-1.md) ... this document 
+- [Part 1 - Azure Kubernetes Service (AKS)](aks-1.md) ... this document 
 - [Part 2 - Helm Package Management](aks-2.md)
 - [Part 3 - Monitoring Kubernetes](aks-3.md)
 
@@ -12,7 +12,7 @@ Mark Harrison : 27 Nov 2017
 
 Azure Container Service (ACS) allows you to quickly deploy a production ready Kubernetes, DC/OS, or Docker Swarm cluster.
 
-AKS provides a fully managed Kubernetes based ACS cluster - it   reduces the complexity and operational overhead of managing a Kubernetes cluster by offloading much of that responsibility to the Azure platform.
+AKS provides a fully managed Kubernetes based ACS cluster - it reduces the complexity and operational overhead of managing a Kubernetes cluster by offloading much of that responsibility to the Azure platform.
 
 ## Create AKS instance
 
@@ -63,9 +63,9 @@ kubectl config current-context
 - To display the Kubernetes dashboard, invoke the following
 
 ```text
-kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin ` 
+kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin `
                                     --serviceaccount=kube-system:kubernetes-dashboard
-                                    
+
 az aks browse --name markaks
 ```
 
