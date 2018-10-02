@@ -25,7 +25,8 @@ Helm has two parts: a client (Helm) and a server (Tiller). Tiller runs inside of
 - To install the Tiller, use the command:
 
 ```text
-kubectl create clusterrolebinding tiller --clusterrole=cluster-admin  --serviceaccount=kube-system:tiller
+xxxkubectl create clusterrolebinding tiller --clusterrole=cluster-admin  --serviceaccount=kube-system:tiller
+use YAML at : https://docs.microsoft.com/en-us/azure/aks/kubernetes-helm#create-a-service-account  
 
 helm init --service-account tiller
 ```
