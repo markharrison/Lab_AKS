@@ -27,7 +27,7 @@ All Azure resources must reside with an Azure resource group.
 az login
 az group create --name AKS-rg --location westeurope
 az configure --defaults group=AKS-rg
-az aks get-versions -l eastus -o table
+az aks get-versions -l westeurope -o table
 ```
 
 We can now create an AKS instance using the `az aks create` command.
