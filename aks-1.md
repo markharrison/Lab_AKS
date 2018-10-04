@@ -21,17 +21,20 @@ All Azure resources must reside with an Azure resource group.
 - Invoke the following:
   - Amend the resource group name to that required - and in the subsequent instructions
   - Amend the location to that require (check AKS is available in the region)
+  - Check what versions of Kubernetes are available at the required location
 
 ```text
 az login
 az group create --name AKS-rg --location westeurope
 az configure --defaults group=AKS-rg
+az aks get-versions -l eastus -o table
 ```
 
 We can now create an AKS instance using the `az aks create` command.
 
 - Invoke the following:
   - Amend the AKS name to that required - and in the subsequent instructions
+  - Amend the Kubernetes version to that required 
 
 ```text
  az aks create --name markaks --generate-ssh-keys --kubernetes-version 1.9.6
