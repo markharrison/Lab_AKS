@@ -13,7 +13,7 @@ Mark Harrison : 7 Apr 2018, last update 24 Sep 2018
 In this section, we shall monitor our Kubernetes cluster using:
 
 - Azure Log Analytics - Container Monitoring solution
-- AKS Monitor (preview)
+- AKS Container Insights (preview)
 - Prometheus / Grafana - open source toolkit to monitor and alert
 - Datadog - commercial monitoring offering 
 
@@ -103,9 +103,9 @@ helm delete --purge omsagent
 
 ![](Images/HelmOMSRemove.png)
 
-## AKS Monitor (preview)
+## AKS Container Insights (preview)
 
-To set up and use Azure Monitor container health, use the command to install the the monitoring agent daemonset on our Kubernetes cluster
+To set up and use AKS Container Insights, use the command to install the the monitoring agent daemonset on our Kubernetes cluster
 
 ```PowerShell
 az aks enable-addons -a monitoring -n markaks
@@ -127,11 +127,17 @@ az aks enable-addons -a monitoring -n markaks
 
 ### Tidy Up
 
-We can use the following command to remove the monitoring agent daemonset   ...
+We can use the following command to remove the monitoring agent daemonset
 
+```text
 az aks disable-addons -a monitoring -n markaks
+```
 
 ## Prometheus / Grafana
+
+ [Prometheus](https://www.prometheus.io/) is an open-source systems monitoring and alerting toolkit.
+
+ [Grafana](https://grafana.com/) is analytics platform thats allows one to query, visualize, alert on metrics. Grafana ships with built in support for Prometheus. 
 
 ### Install
 

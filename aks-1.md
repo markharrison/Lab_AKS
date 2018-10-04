@@ -4,7 +4,7 @@ Mark Harrison : 27 Nov 2017, last update 24 Sep 2018
 
 ![](Images/AKS.png)
 
-- [Part 1 - Azure Kubernetes Service (AKS)](aks-1.md) ... this document 
+- [Part 1 - Azure Kubernetes Service (AKS)](aks-1.md) ... this document
 - [Part 2 - Helm Package Management](aks-2.md)
 - [Part 3 - Monitoring Kubernetes](aks-3.md)
 
@@ -21,19 +21,19 @@ All Azure resources must reside with an Azure resource group.
 - Invoke the following:
   - Amend the resource group name to that required - and in the subsequent instructions
   - Amend the location to that require (check AKS is available in the region)
-  
+
 ```text
 az login
 az group create --name AKS-rg --location westeurope
 az configure --defaults group=AKS-rg
 ```
 
-A couple of useful commands to check what regions support AKS and what versions of Kubernetes are available at a specific location 
+A couple of useful commands to check what regions support AKS and what versions of Kubernetes are available at a specific location
 
 ```text
 az provider show --namespace Microsoft.ContainerService `
                  --query "resourceTypes[?resourceType=='managedClusters'].locations | [0]"
-                  
+
 az aks get-versions -l westeurope -o table
 ```
 
@@ -41,7 +41,7 @@ We can now create an AKS instance using the `az aks create` command.
 
 - Invoke the following:
   - Amend the AKS name to that required - and in the subsequent instructions
-  - Amend the Kubernetes version to that required 
+  - Amend the Kubernetes version to that required
 
 ```text
  az aks create --name markaks --generate-ssh-keys --kubernetes-version 1.9.6

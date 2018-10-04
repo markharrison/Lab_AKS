@@ -22,11 +22,11 @@ Discover & launch  Kubernetes-ready apps at <https://hub.kubeapps.com/>
 
 Helm has two parts: a client (Helm) and a server (Tiller). Tiller runs inside of your Kubernetes cluster, and manages releases (installations) of your charts (packages).
 
-- To install the Tiller, use the command:
+- To install the Tiller, use the commands:
 
 ```text
-xxxkubectl create clusterrolebinding tiller --clusterrole=cluster-admin  --serviceaccount=kube-system:tiller
-use YAML at : https://docs.microsoft.com/en-us/azure/aks/kubernetes-helm#create-a-service-account  
+kubectl create serviceaccount -n kube-system tiller
+kubectl create clusterrolebinding tiller --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
 
 helm init --service-account tiller
 ```
