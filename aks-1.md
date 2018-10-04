@@ -21,12 +21,19 @@ All Azure resources must reside with an Azure resource group.
 - Invoke the following:
   - Amend the resource group name to that required - and in the subsequent instructions
   - Amend the location to that require (check AKS is available in the region)
-  - Check what versions of Kubernetes are available at the required location
-
+  
 ```text
 az login
 az group create --name AKS-rg --location westeurope
 az configure --defaults group=AKS-rg
+```
+
+A couple of useful commands to check what regions support AKS and what versions of Kubernetes are available at a specific location 
+
+```text
+az provider show --namespace Microsoft.ContainerService `
+                 --query "resourceTypes[?resourceType=='managedClusters'].locations | [0]"
+                  
 az aks get-versions -l westeurope -o table
 ```
 
