@@ -79,7 +79,7 @@ kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-adm
 az aks browse --name markaks
 ```
 
-If using the cloud shell then append `--enable-cloud-console-aks-browse`:
+- If using the cloud shell then append `--enable-cloud-console-aks-browse`:
 
 ```text1
 az aks browse --name markaks --enable-cloud-console-aks-browse
