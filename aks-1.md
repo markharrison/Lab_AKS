@@ -70,13 +70,19 @@ kubectl config current-context
 
 ![](Images/AKSGetCredentials.png)
 
-- To display the Kubernetes dashboard, invoke the following
+- To display the Kubernetes dashboard, invoke the following:
 
 ```text
 kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin `
                                     --serviceaccount=kube-system:kubernetes-dashboard
 
 az aks browse --name markaks
+```
+
+If using the cloud shell then append `--enable-cloud-console-aks-browse`:
+
+```text1
+az aks browse --name markaks --enable-cloud-console-aks-browse
 ```
 
 ![](Images/AKSDashboard.png)
